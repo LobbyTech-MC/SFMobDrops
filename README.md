@@ -2,12 +2,22 @@
 
 一个可以让生物掉落粘液科技物品的附属插件。
 
+## 下载
 
-## Contributing
+**自动更新**: 汉化版构建#1及以后版本包含自动更新功能，默认开启。
 
-Contributions are always welcome to this project!  
-Take a look at any existing issues on this repository for starting places to help contribute towards, or simply create your own new contribution to the project.
+点击这里下载 SFMobDrops
+: [下载 SFMobDrops](https://builds.guizhanss.net/SlimefunGuguProject/SFMobDrops/main)
 
-Please make sure to follow the existing standards within the project such as code styles, naming conventions and commenting/documentation.
+<p align="center">
+  <a href="https://github.com/SlimefunGuguProject/SFMobDrops/actions/workflows/maven.yml">
+    <img src="https://github.com/SlimefunGuguProject/SFMobDrops/actions/workflows/maven.yml/badge.svg" alt="Java CI"/>
+  </a>
+  <a href="https://builds.guizhanss.net/SlimefunGuguProject/SFMobDrops/main">
+    <img src="https://builds.guizhanss.net/f/SlimefunGuguProject/SFMobDrops/main/badge.svg" alt="Build status"/>
+  </a>
+</p>
 
-When you are ready, simply create a pull request for your contribution and I will review it whenever I can!
+## 贡献
+
+欢迎任何人参与本附属的开发！
