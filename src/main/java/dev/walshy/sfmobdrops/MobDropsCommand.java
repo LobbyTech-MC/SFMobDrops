@@ -22,7 +22,7 @@ public class MobDropsCommand implements TabExecutor {
     @ParametersAreNonnullByDefault
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (!sender.hasPermission("sfmobdrops.admin")) {
-            sender.sendMessage(ChatColor.RED + "hmm, you can't do this.");
+            sender.sendMessage(ChatColor.RED + "你没有权限使用该指令");
             return true;
         }
 
@@ -32,19 +32,19 @@ public class MobDropsCommand implements TabExecutor {
             if (args[0].equalsIgnoreCase("reload")) {
                 SfMobDrops.getInstance().reloadConfig();
                 SfMobDrops.getInstance().loadConfig();
-                sender.sendMessage(ChatColor.DARK_GREEN + "Reloaded config!");
+                sender.sendMessage(ChatColor.DARK_GREEN + "已重载配置文件!");
             } else if (args[0].equalsIgnoreCase("list")) {
                 if (!(sender instanceof Player)) {
-                    sender.sendMessage(ChatColor.RED + "You need to be a player, sorry :/");
+                    sender.sendMessage(ChatColor.RED + "只有玩家才能执行该指令!");
                     return true;
                 }
                 Guis.openMobDropList((Player) sender);
             } else if (args[0].equalsIgnoreCase("new") || args[0].equalsIgnoreCase("delete")) {
                 if (!(sender instanceof Player)) {
-                    sender.sendMessage(ChatColor.RED + "You need to be a player, sorry :/");
+                    sender.sendMessage(ChatColor.RED + "只有玩家才能执行该指令!");
                     return true;
                 }
-                sender.sendMessage(ChatColor.RED + "I'll make this at some point");
+                sender.sendMessage(ChatColor.RED + "该指令暂无任何效果");
             } else {
                 sendUsage(sender);
             }
@@ -66,10 +66,10 @@ public class MobDropsCommand implements TabExecutor {
     private void sendUsage(@Nonnull CommandSender sender) {
         sender.sendMessage(
             ChatColor.GRAY + "----------" + ChatColor.GOLD + "SFMobDrops" + ChatColor.GRAY + "----------"
-                + '\n' + ChatColor.GOLD + "/mobdrops reload" + ChatColor.GRAY + " - Reload the configuration"
-                + '\n' + ChatColor.GOLD + "/mobdrops list" + ChatColor.GRAY + " - Get a list of the mob drops"
-                + '\n' + ChatColor.GOLD + "/mobdrops new" + ChatColor.GRAY + " - Create a new mob drop"
-                + '\n' + ChatColor.GOLD + "/mobdrops delete" + ChatColor.GRAY + " - Delete a mob drop"
+                + '\n' + ChatColor.GOLD + "/mobdrops reload" + ChatColor.GRAY + " - 重载配置文件"
+                + '\n' + ChatColor.GOLD + "/mobdrops list" + ChatColor.GRAY + " - 获取掉落列表"
+                + '\n' + ChatColor.GOLD + "/mobdrops new" + ChatColor.GRAY + " - 创建掉落配置"
+                + '\n' + ChatColor.GOLD + "/mobdrops delete" + ChatColor.GRAY + " - 删除掉落配置"
         );
     }
 }
