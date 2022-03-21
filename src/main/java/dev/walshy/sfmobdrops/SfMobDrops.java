@@ -1,7 +1,7 @@
 package dev.walshy.sfmobdrops;
 
-import io.github.bakedlibs.dough.updater.GitHubBuildsUpdater;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import net.guizhanss.guizhanlib.updater.GuizhanBuildsUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -34,8 +34,8 @@ public class SfMobDrops extends JavaPlugin implements Listener {
             saveDefaultConfig();
         }
 
-        if (getConfig().getBoolean("settings.autoUpdate", true) && getDescription().getVersion().startsWith("DEV - ")) {
-            new GitHubBuildsUpdater(this, getFile(), "WalshyDev/SFMobDrops/main").start();
+        if (getConfig().getBoolean("settings.autoUpdate", true) && getDescription().getVersion().startsWith("Build")) {
+            new GuizhanBuildsUpdater(this, getFile(), "SlimefunGuguProject", "SFMobDrops", "main", false).start();
         }
 
         new Metrics(this, 11950);
@@ -79,7 +79,7 @@ public class SfMobDrops extends JavaPlugin implements Listener {
 
         this.drops.clear();
         this.drops.addAll(newSet);
-        getLogger().info("Loaded in " + this.drops.size() + " drops!");
+        getLogger().info("已加载 " + this.drops.size() + " 个掉落物配置!");
     }
 
     @EventHandler
@@ -108,46 +108,46 @@ public class SfMobDrops extends JavaPlugin implements Listener {
 
         // Required
         if (entity == null || sfItem == null) {
-            getLogger().warning("Required property missing! 'entity', 'slimefunItem' and 'chance' are required!");
+            getLogger().warning("未指定 'entity', 'slimefunItem' 以及 'chance'!");
             return false;
         }
 
         if (!Constants.CONSTANT.matcher(entity).matches()) {
-            getLogger().warning("Entity should be in SCREAMING_SNAKE_CASE!");
+            getLogger().warning("实体类型格式不正确!");
             return false;
         }
 
         if (!Constants.CONSTANT.matcher(sfItem).matches()) {
-            getLogger().warning("Slimefun ID should be in SCREAMING_SNAKE_CASE!");
+            getLogger().warning("粘液科技物品 ID 格式不正确!");
             return false;
         }
 
         if (chance < 1 || chance > 100) {
-            getLogger().warning("Chance is not a valid value! It needs to be between 0-100");
+            getLogger().warning("掉落几率无效，有效值为：0-100");
             return false;
         }
 
         // Not required
         if (nbtTag != null && !Constants.NAMESPACE.matcher(nbtTag).matches()) {
-            getLogger().warning("The NBT Tag need to be in snake_case!");
+            getLogger().warning("NBT标签格式不正确!");
             return false;
         }
 
         if (amount < 1 || amount > 64) {
-            getLogger().warning("Amount needs to be between 0-64!");
+            getLogger().warning("数量无效，有效值为：0-64");
             return false;
         }
 
         // Validate values
         if (entityFromString(entity) == null) {
-            getLogger().warning("Invalid entity type value! Given: " + entity + " - valid values here: "
+            getLogger().warning("无效的实体类型: " + entity + " - 可通过该网址查询: "
                 + "https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html");
             return false;
         }
 
         if (SlimefunItem.getById(sfItem) == null) {
-            getLogger().warning("Invalid Slimefun Item ID! Given: " + sfItem + " - valid values can be found "
-                + "here: https://sf-items.walshy.dev/");
+            getLogger().warning("无效的粘液科技物品 ID: " + sfItem + " - 可通过该网址查询: "
+                + "https://slimefun-helper.guizhanss.cn/");
             return false;
         }
 
@@ -159,7 +159,7 @@ public class SfMobDrops extends JavaPlugin implements Listener {
         try {
             return EntityType.valueOf(str);
         } catch (IllegalArgumentException e) {
-            getLogger().log(Level.WARNING, "Invalid Entity Type given! {0} is not valid!", str);
+            getLogger().log(Level.WARNING, "无效的实体类型: {0}", str);
             return null;
         }
     }

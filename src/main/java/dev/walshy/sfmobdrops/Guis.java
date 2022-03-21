@@ -1,6 +1,7 @@
 package dev.walshy.sfmobdrops;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import net.guizhanss.guizhanlib.minecraft.helper.entity.EntityTypeHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -22,7 +23,7 @@ import java.util.Set;
 
 public final class Guis implements Listener {
 
-    private static final String TITLE = ChatColor.DARK_PURPLE + "Mob Drops";
+    private static final String TITLE = ChatColor.DARK_PURPLE + "生物掉落";
 
     protected Guis() {}
 
@@ -43,15 +44,15 @@ public final class Guis implements Listener {
             im.setDisplayName(ChatColor.GRAY + "" + amount + "x " + item.getItemName());
 
             final List<String> lore = new ArrayList<>();
-            lore.add(ChatColor.GRAY + "Drops from " + getEntity(drop.getDropsFrom()));
+            lore.add(ChatColor.GRAY + "来自 " + getEntity(drop.getDropsFrom()));
             lore.add("");
-            lore.add(ChatColor.LIGHT_PURPLE + "" + drop.getChance() + "% " + ChatColor.GRAY + "chance");
+            lore.add(ChatColor.LIGHT_PURPLE + "" + drop.getChance() + "% " + ChatColor.GRAY + " 几率");
 
             if (drop.getEntityName() != null) {
-                lore.add(ChatColor.GRAY + "Requires name: " + Constants.color(drop.getEntityName()));
+                lore.add(ChatColor.GRAY + "必须拥有指定名称: " + Constants.color(drop.getEntityName()));
             }
             if (drop.getEntityNbtTag() != null) {
-                lore.add(ChatColor.GRAY + "Requires tag: " + ChatColor.LIGHT_PURPLE + drop.getEntityNbtTag());
+                lore.add(ChatColor.GRAY + "必须拥有指定NBT: " + ChatColor.LIGHT_PURPLE + drop.getEntityNbtTag());
             }
             im.setLore(lore);
             is.setItemMeta(im);
@@ -81,26 +82,7 @@ public final class Guis implements Listener {
     }
 
     private static String getEntity(@Nonnull EntityType type) {
-        return ChatColor.LIGHT_PURPLE + capitalise(type.name().charAt(0) + type.name().substring(1)
-            .replace('_', ' ')
-            .toLowerCase(Locale.ROOT));
-    }
-
-    private static String capitalise(String str) {
-        if (str.isEmpty()) return str;
-
-        final char[] chars = str.toCharArray();
-        boolean capitalizeNext = true;
-        for (int i = 0; i < chars.length; i++) {
-            final char ch = chars[i];
-            if (ch == ' ') {
-                capitalizeNext = true;
-            } else if (capitalizeNext) {
-                chars[i] = Character.toTitleCase(ch);
-                capitalizeNext = false;
-            }
-        }
-        return new String(chars);
+        return ChatColor.LIGHT_PURPLE + EntityTypeHelper.getName(type);
     }
 
     @EventHandler

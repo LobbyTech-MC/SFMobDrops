@@ -1,41 +1,23 @@
-<h1 align="center">SFMobDrops</h1>
+# SFMobDrops 粘液科技生物掉落
 
-<h3 align="center">Add Slimefun items to mob drops!</h3>
+一个可以让生物掉落粘液科技物品的附属插件。
 
-<!-- Badges -->
+## 下载
+
+**自动更新**: 汉化版构建#1及以后版本包含自动更新功能，默认开启。
+
+点击这里下载 SFMobDrops
+: [下载 SFMobDrops](https://builds.guizhanss.net/SlimefunGuguProject/SFMobDrops/main)
+
 <p align="center">
-    <a href="https://github.com/users/WalshyDev/sponsorship" target="_blank">
-        <img src="https://img.shields.io/badge/GitHub%20Sponsors-WalshyDev-orange.svg?style=flat-square" alt="GitHub Sponsors"/>
-    </a>
-    <a href="http://walshy.dev/donate" target="_blank">
-        <img src="https://img.shields.io/badge/PayPal-WalshyDev-blue.svg?style=flat-square" alt="Slack"/>
-    </a>
+  <a href="https://github.com/SlimefunGuguProject/SFMobDrops/actions/workflows/maven.yml">
+    <img src="https://github.com/SlimefunGuguProject/SFMobDrops/actions/workflows/maven.yml/badge.svg" alt="Java CI"/>
+  </a>
+  <a href="https://builds.guizhanss.net/SlimefunGuguProject/SFMobDrops/main">
+    <img src="https://builds.guizhanss.net/f/SlimefunGuguProject/SFMobDrops/main/badge.svg" alt="Build status"/>
+  </a>
 </p>
 
-<hr/>
+## 贡献
 
-## Hello
-
-This repository is the source code and download page for SFMobDrops. A simple plugin to add Slimefun drops to any mob.
-
-## Contributing
-
-Contributions are always welcome to this project!  
-Take a look at any existing issues on this repository for starting places to help contribute towards, or simply create your own new contribution to the project.
-
-Please make sure to follow the existing standards within the project such as code styles, naming conventions and commenting/documentation.
-
-When you are ready, simply create a pull request for your contribution and I will review it whenever I can!
-
-### Donating
-
-You can also help me and the project out by sponsoring me through [GitHub Sponsors](https://github.com/users/WalshyDev/sponsorship) or by donating on [PayPal](https://walshy.dev/donate).
-<!-- Donation badges -->
-<p>
-    <a href="https://github.com/users/WalshyDev/sponsorship" target="_blank">
-        <img src="https://img.shields.io/badge/GitHub%20Sponsors-WalshyDev-orange.svg?style=flat-square" alt="GitHub Sponsors"/>
-    </a>
-    <a href="http://walshy.dev/donate" target="_blank">
-        <img src="https://img.shields.io/badge/PayPal-WalshyDev-blue.svg?style=flat-square" alt="Slack"/>
-    </a>
-</p>
+欢迎任何人参与本附属的开发！

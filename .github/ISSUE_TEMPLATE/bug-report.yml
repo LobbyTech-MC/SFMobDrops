@@ -1,127 +1,151 @@
-name: Bug Report
-description: Report a Bug or an Issue.
-labels: ['🐞 Bug Report']
-
+name: Bug汇报
+description: 反馈本插件的Bug或问题
+labels: ["bug"]
+assignees:
+  - ybw0014
 body:
-- type: markdown
-  attributes:
-    value: |
-      ## 👋 Welcome to the SFMobDrops Bug Tracker
-      If you need any help to identify the problem, visit the [Slimefun Discord server](https://discord.gg/slimefun) and see if others experience a similar issue.
-      Also take a look at the list of [existing Issues](https://github.com/Slimefun/Slimefun4/issues).
-      <br /><strong><i>Fields marked with an asterisk (*) are required.</i></strong>
-      <br />
+  - type: markdown
+    attributes:
+      value: |
+        ## 欢迎来到 SlimefunGuguProject 的问题追踪器
+        你正在反馈 SfMobDrops 汉化版出现的 Bug。
+        任何意见，建议请前往[QQ群](https://ybw0014.net/go/sf-qgroup)进行反馈。
+        建议先阅读[这篇文章](https://slimefun-wiki.guizhanss.cn/How-to-report-bugs)了解如何正确地汇报Bug。
 
-- id: checklist
-  type: checkboxes
-  attributes:
-    label: '❗ Checklist'
-    description: Please go through this checklist before creating the issue.
-    options:
-    - label: I am using an up to date "DEV" (not "RC") version of SFMobDrops and Slimefun.
+        <strong><i>你必须填写标注为星号（*）的表单项</i></strong>
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 检查项目
+      description: 在汇报之前，你需要确认
+      options:
+        - label: 你使用的是从构建站下载的版本 (https://builds.guizhanss.net)
+          required: true
+        - label: 你已经检验过下载的文件的校验和，确认已完整下载文件 (暂未推出)
+          required: false
+        - label: 你没有对下载的文件内容进行任何更改
+          required: true
+        - label: 你没有安装`CS-CoreLib`
+          required: true
+        - label: 你已经寻找过[已知问题列表](https://github.com/SlimefunGuguProject/SfMobDrops/issues)，且没有找到相同的问题
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: |
+        详细描述你要汇报的问题
+        提供详细的信息能让我们更快地处理问题
+      placeholder: 只说"不能用"没法让开发者定位问题。
+    validations:
       required: true
-    - label: I searched for similar open issues and could not find an existing bug report on this.
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: |
+        请详细描述如何才能复现该问题
+        如果有视频，请在此提供视频链接
+      placeholder: |
+        1. xxx
+        2. xxx
+    validations:
       required: true
 
-- id: description
-  type: textarea
-  validations:
-    required: true
-  attributes:
-    label: '📍 Description'
-    description: |
-      A clear and detailed description of what went wrong.
-      The more information you can provide, the easier we can handle this problem.
-    placeholder: |
-      When doing [...] I experienced [...], I am pretty sure this is not intended and should be fixed.
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 预期行为
+      description: |
+        你觉得应该发生什么
+        有时候，问题的原因是你误解了某个功能。
+    validations:
+      required: true
 
-- id: reproduction-steps
-  type: textarea
-  validations:
-    required: true
-  attributes:
-    label: '📑 Reproduction Steps'
-    description: |
-      Tell us the exact steps to reproduce this issue, the more detailed the easier we can reproduce it.
-    placeholder: |
-      1. Do [...]
-      2. Then do [...]
-      3. Now [...] happens
+  - type: input
+    id: server-log
+    attributes:
+      label: 服务器日志
+      description: |
+        请查看服务器日志中是否包含任何报错，如果有请上传至 [https://paste.guizhanss.net/](https://paste.guizhanss.net/) 并在此填入链接。
+        **不要直接在这里粘贴日志**
+      placeholder: https://paste.guizhanss.net/...
+    validations:
+      required: false
 
-- id: expected-behaviour
-  type: textarea
-  validations:
-    required: true
-  attributes:
-    label: '💡 Expected Behavior'
-    description: |
-      What were you expecting to happen?
-      What do you think would have been the correct behaviour?
-    placeholder: |
-      I expected [...] to happen.
+  - type: input
+    id: error-report
+    attributes:
+      label: 错误报告
+      description: |
+        如果服务器日志中提到了`/plugins/Slimefun/error-reports`中的文件（即错误报告）
+        请上传至 [https://paste.guizhanss.net/](https://paste.guizhanss.net/) 并在此填入链接。
+        **不要直接在这里粘贴错误报告**
+      placeholder: https://paste.guizhanss.net/...
+    validations:
+      required: false
 
-- id: server-log
-  type: input
-  attributes:
-    label: '📜 Server Log'
-    description: |
-      Take a look at your Server Log and upload any error messages from SFMobDrops to a pasting site (e.g. https://pastebin.com/).
-      If you are unsure about it, post your full log, you can find it under /logs/latest.log
-    placeholder: https://pastebin.com/...
+  - type: dropdown
+    id: server-software
+    attributes:
+      label: 服务端软件
+      description: 请选择你服务端所使用的软件
+      options:
+        - Spigot
+        - Paper
+        - Purpur
+        - Airplane
+        - 其他 (请在问题描述里写明)
+    validations:
+      required: true
 
-- id: server-software
-  type: dropdown
-  validations:
-    required: true
-  attributes:
-    label: '💻 Server Software'
-    description: 'Please select the software your Server is running on'
-    options:
-      - Spigot
-      - Paper
-      - Tuinity
-      - Airplane
-      - Other (please specify in your description)
+  - type: dropdown
+    id: minecraft-version
+    attributes:
+      label: Minecraft 版本
+      description: 请选择你的 Minecraft 版本
+      options:
+        - 1.18.x
+        - 1.17.x
+        - 1.16.x
+        - 1.15.x
+        - 1.14.x
+        - 本插件不支持旧版本
+    validations:
+      required: true
 
-- id: minecraft-version
-  type: dropdown
-  validations:
-    required: true
-  attributes:
-    label: '🎮 Minecraft Version'
-    description: 'Please select the Minecraft version of the server'
-    options:
-      - 1.17.x
-      - 1.16.x
-      - 1.15.x
-      - 1.14.x
-      - (Older versions are not supported)
+  - type: checkboxes
+    id: cscorelib-version
+    attributes:
+      label: CS-CoreLib 版本
+      description: |
+        从2021年1月30日起，Slimefun以及其附属插件都不再需要安装CS-CoreLib。
+        保留CS-CoreLib可能导致一些未知的问题。
+      options:
+        - label: 我没有安装CS-CoreLib
+          required: true
 
-- id: versions
-  type: textarea
-  validations:
-    required: true
-  attributes:
-    label: '⭐ SFMobDrops and Slimefun version'
-    description: |
-      **"latest" is not a version number, we need the exact version.**
-      We recommend running "/sf versions" and uploading a screenshot of that.
-      Make sure that the screenshot covers the entire output of that command.
-    placeholder: SFMobDrops version [...] and Slimefun version [...]
+  - type: textarea
+    id: slimefun-version
+    attributes:
+      label: Slimefun版本
+      description: |
+        请填写Slimefun版本
+        (例如 v4.9-canary-08120db)
+        如果你有管理员权限，建议运行`/sf versions`指令，截图并在此上传指令输出的**所有内容**。
+    validations:
+      required: true
 
-- id: other-versions
-  type: textarea
-  attributes:
-    label: '🧭 Other plugins'
-    description: |
-      If your issue is related to another plugin, make sure to include this here!
-    placeholder: The issue is related to plugin [...], version [...]
-
-- type: markdown
-  attributes:
-    value: |
-      ## ❤️ Thank you for submitting your bug report!
-      If you find any additional info that can help to identify this problem, don't hesitate to comment on your issue!
-      Any additional info can help us fix this bug faster.
-      In the meantime, try visiting the [Slimefun Discord server](https://discord.gg/slimefun).
-      Perhaps someone else has experienced a similar issue.
+  - type: input
+    id: version-plugin
+    attributes:
+      label: 插件版本
+      description: |
+        请填写插件版本
+        只需填写Build后面的数字版本即可
+        (`Build 7 zh-CN(ybw0014) (git 9ef7fee)`只需填写`7`即可)
+    validations:
+      required: true
