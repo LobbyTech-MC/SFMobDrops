@@ -18,6 +18,10 @@
   </a>
 </p>
 
+## 配置
+
+请查看[Wiki](https://slimefun-addons-wiki.guizhanss.cn/custom-plugins/Sf-Mob-Drops)
+
 ## 贡献
 
 欢迎任何人参与本附属的开发！
