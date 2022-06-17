@@ -20,7 +20,7 @@
 
 ## 配置
 
-请查看[Wiki](https://slimefun-addons-wiki.guizhanss.cn/custom-plugins/Sf-Mob-Drops)
+请查看[Wiki](https://slimefun-addons-wiki.guizhanss.cn/sf-mob-drops/)
 
 ## 贡献
 
