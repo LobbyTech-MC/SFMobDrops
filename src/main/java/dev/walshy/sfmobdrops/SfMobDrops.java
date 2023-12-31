@@ -1,7 +1,16 @@
 package dev.walshy.sfmobdrops;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import net.guizhanss.guizhanlib.updater.GuizhanBuildsUpdater;
+import java.io.File;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -11,15 +20,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.io.File;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 
 public class SfMobDrops extends JavaPlugin implements Listener {
 
@@ -34,9 +35,11 @@ public class SfMobDrops extends JavaPlugin implements Listener {
             saveDefaultConfig();
         }
 
+        /*
         if (getConfig().getBoolean("settings.autoUpdate", true) && getDescription().getVersion().startsWith("Build")) {
             new GuizhanBuildsUpdater(this, getFile(), "SlimefunGuguProject", "SFMobDrops", "main", false).start();
         }
+        */
 
         new Metrics(this, 11950);
 
