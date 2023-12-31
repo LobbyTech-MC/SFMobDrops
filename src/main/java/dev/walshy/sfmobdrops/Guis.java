@@ -1,7 +1,11 @@
 package dev.walshy.sfmobdrops;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import net.guizhanss.guizhanlib.minecraft.helper.entity.EntityTypeHelper;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.annotation.Nonnull;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,11 +19,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import net.guizhanss.guizhanlib.minecraft.helper.entity.EntityTypeHelper;
 
 public final class Guis implements Listener {
 
