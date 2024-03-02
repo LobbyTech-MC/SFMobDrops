@@ -2,7 +2,15 @@
 # The following properties are required:
 #   - entity
 #     This is the entity which drops the item, available IDs here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html.
+#     You can also use "ALL" to make the item drop from all entities.
 #     Example: ZOMBIE
+#   - drops
+#     This is a list of drops for the entity.
+#     Example:
+#       - slimefunItem: MAGICAL_ZOMBIE_PILLS
+#         chance: 69.420
+#
+# The following properties are required for each drop:
 #   - slimefunItem
 #     This is the Slimefun item ID. Best way to find this is on this website: https://sf-items.walshy.dev/.
 #     Example: MAGICAL_ZOMBIE_PILLS
@@ -17,22 +25,38 @@
 #   - nbtTag
 #     The entity requires this NBT tag.
 #     Example: 'amazing_mob:some_mob_id'
+#
+# The following properties are optional for each drop:
 #   - amount
 #     The amount of the given item to drop.
 #     Example: 10
 drops:
   # This is a basic example
   - entity: ZOMBIE
-    slimefunItem: MAGICAL_ZOMBIE_PILLS
-    chance: 4.20
+    drops:
+      - slimefunItem: MAGICAL_ZOMBIE_PILLS
+        chance: 4.20
 
   # More complex example
   - entity: ENDER_DRAGON
-    slimefunItem: ANCIENT_RUNE_SOULBOUND
-    chance: 100
     name: '&cAmazing Dragon'
     nbtTag: 'plugin_name:awesome_mob'
-    amount: 6
+    drops:
+      - slimefunItem: ANCIENT_RUNE_SOULBOUND
+        chance: 100
+        amount: 1
+      - slimefunItem: BLANK_RUNE
+        chance: 10
+        amount: 2
+
+  # Example of dropping for all entities
+  - entity: ALL
+    name: '&aAny mob named this will drop'
+    drops:
+      - slimefunItem: BLANK_RUNE
+        chance: 0.5
+      - slimefunItem: MAGIC_LUMP_1
+        chance: 1
 
 settings:
   autoUpdate: true

@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        java: ['8', '11']
+        java: ['17', '20']
 
     steps:
     - name: Checkout repository
@@ -32,4 +32,4 @@ jobs:
         restore-keys: ${{ runner.os }}-m2
 
     - name: Build with Maven
-      run: mvn package
+      run: mvn clean package
