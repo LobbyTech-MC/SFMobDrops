@@ -49,11 +49,10 @@ public class SfMobDrops extends JavaPlugin implements Listener {
             saveDefaultConfig();
         }
 
-        if (getConfig().getBoolean("settings.autoUpdate", true) && getDescription().getVersion().startsWith("Build")) {
-            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "SFMobDrops", "main");
-        }
-
         if (!unitTest) {
+            if (getConfig().getBoolean("settings.autoUpdate", true) && getDescription().getVersion().startsWith("Build")) {
+                GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "SFMobDrops", "main");
+            }
             new Metrics(this, 11950);
         }
 
