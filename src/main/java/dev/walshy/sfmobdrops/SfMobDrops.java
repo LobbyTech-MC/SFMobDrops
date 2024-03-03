@@ -3,6 +3,7 @@ package dev.walshy.sfmobdrops;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.core.debug.Debug;
 
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -49,7 +50,7 @@ public class SfMobDrops extends JavaPlugin implements Listener {
         }
 
         if (getConfig().getBoolean("settings.autoUpdate", true) && getDescription().getVersion().startsWith("Build")) {
-            new GuizhanBuildsUpdater(this, getFile(), "SlimefunGuguProject", "SFMobDrops", "main", false).start();
+            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "SFMobDrops", "main");
         }
 
         if (!unitTest) {

@@ -36,13 +36,13 @@ public class Config {
 
             final String entity = (String) map.get("entity");
             if (entity == null) {
-                logSkipMsg("'entity' is not defined");
+                logSkipMsg("'entity' 未设置");
                 continue;
             }
 
             // Load Entity
             if (!Constants.CONSTANT.asMatchPredicate().test(entity)) {
-                logSkipMsg("'entity' should be in SCREAMING_SNAKE_CASE");
+                logSkipMsg("'entity' 格式不正确");
                 continue;
             } else if (entity.equals("ALL")) {
                 builder.allMobs(true);
@@ -51,7 +51,7 @@ public class Config {
                 try {
                     type = EntityType.valueOf(entity);
                 } catch(Exception e) {
-                    logSkipMsg("Invalid entity type: " + entity);
+                    logSkipMsg("无效的实体类型：" + entity);
                     continue;
                 }
 
@@ -68,13 +68,13 @@ public class Config {
             final String nbtTag = (String) map.get("nbtTag");
             if (nbtTag != null) {
                 if (!Constants.NAMESPACE.asMatchPredicate().test(nbtTag)) {
-                    logSkipMsg("'nbtTag' should be a valid namespace - e.g. 'some_plugin:custom_mob'");
+                    logSkipMsg("'nbtTag' 必须为有效的 NamespacedKey。例如：'some_plugin:custom_mob'");
                     continue;
                 } else {
                     NamespacedKey key = NamespacedKey.fromString(nbtTag);
 
                     if (key == null) {
-                        logSkipMsg("Invalid nbtTag: " + nbtTag);
+                        logSkipMsg("无效的 nbtTag: " + nbtTag);
                         continue;
                     }
 
@@ -119,7 +119,7 @@ public class Config {
             // Load Slimefun item
             final String slimefunId = (String) dropMap.get("slimefunItem");
             if (slimefunId == null) {
-                logSkipMsg("'slimefunItem' is not defined");
+                logSkipMsg("'slimefunItem' 未设置");
                 return null;
             }
             builder.slimefunItem(slimefunId);
@@ -127,7 +127,7 @@ public class Config {
             // Load chance
             Object chanceObj = dropMap.get("chance");
             if (chanceObj == null) {
-                logSkipMsg("'chance' is not defined");
+                logSkipMsg("'chance' 未设置");
                 return null;
             }
             builder.chance(getDouble(chanceObj));
@@ -151,16 +151,16 @@ public class Config {
      */
     @Nullable
     private Set<Drop> loadLegacyDrop(@Nonnull Map<String, Object> map) {
-        instance.getLogger().warning("Loading legacy drop for " + map.get("entity") + ". "
-            + "Please update to the new format. "
-            + "The legacy format will be removed in the future."
+        instance.getLogger().warning("正在为实体 " + map.get("entity") + " 加载旧版配置。"
+            + "请更新配置文件。"
+            + "旧版配置将在未来移除。"
         );
         final Drop.DropBuilder builder = Drop.builder();
 
         // Load Slimefun item
         final String slimefunId = (String) map.get("slimefunItem");
         if (slimefunId == null) {
-            logSkipMsg("'slimefunItem' is not defined");
+            logSkipMsg("'slimefunItem' 未设置");
             return null;
         }
         builder.slimefunItem(slimefunId);
@@ -168,7 +168,7 @@ public class Config {
         // Load chance
         Object chanceObj = map.get("chance");
         if (chanceObj == null) {
-            logSkipMsg("'chance' is not defined");
+            logSkipMsg("'chance' 未设置");
             return null;
         }
         builder.chance(getDouble(chanceObj));
@@ -180,7 +180,7 @@ public class Config {
     }
 
     private void logSkipMsg(@Nonnull String reason) {
-        instance.getLogger().warning(reason + ". Skipping invalid drop");
+        instance.getLogger().warning(reason + "。跳过当前配置。");
     }
 
     private int getInt(@Nullable Object obj) {
