@@ -5,6 +5,8 @@ api-version: 1.14
 author: WalshyDev
 main: dev.walshy.sfmobdrops.SfMobDrops
 depend: [Slimefun]
+softdepend:
+  - GuizhanLibPlugin
 
 commands:
   mobdrops:

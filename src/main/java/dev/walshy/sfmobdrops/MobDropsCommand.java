@@ -31,7 +31,7 @@ public class MobDropsCommand implements TabExecutor {
         } else {
             if (args[0].equalsIgnoreCase("reload")) {
                 SfMobDrops.getInstance().reloadConfig();
-                SfMobDrops.getInstance().loadConfig();
+                SfMobDrops.getInstance().loadDrops();
                 sender.sendMessage(ChatColor.DARK_GREEN + "已重载配置文件!");
             } else if (args[0].equalsIgnoreCase("list")) {
                 if (!(sender instanceof Player)) {
